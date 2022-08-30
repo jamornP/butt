@@ -15,7 +15,7 @@
             <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
                 <h3 >ทะเบียน รับหนังสือ </h3>
                 <div>
-                    <a href="" class="btn btn-primary">รับหนังสือปกติ</a>
+                    <a href="/butt/procurement/pages/book/form.php" class="btn btn-primary">รับหนังสือปกติ</a>
                     <a href="" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a>
                 </div>
                 
