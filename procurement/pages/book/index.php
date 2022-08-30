@@ -12,7 +12,15 @@
     <?php require $_SERVER['DOCUMENT_ROOT']."/butt/component/navbar/navbar_procurement.php";?>
     <div class="container mt-5">
         <div class="card shadow">
-            <h3 class="card-header bg-la text-white">ทะเบียน รับหนังสือ </h3>
+            <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
+                <h3 >ทะเบียน รับหนังสือ </h3>
+                <div>
+                    <a href="" class="btn btn-primary">รับหนังสือปกติ</a>
+                    <a href="" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a>
+                </div>
+                
+            </div>
+            
             <div class="card-body">
                 <h5 class="card-title">วันที่ <?php echo day(date("Y-m-d"));?> เดือน <?php echo monthfull(date("Y-m-d"));?> พ.ศ. <?php echo year(date("Y-m-d"));?></h5>
                 <table class="table table-hover">
