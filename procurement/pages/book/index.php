@@ -26,13 +26,14 @@
                 <table class="table table-hover">
                     <thead class="bg-main">
                         <tr>
-                        <th scope="col">ลำดับที่</th>
-                        <th scope="col">เลขที่</th>
+                        <th scope="col">วันที่รับ</th>
+                        <th scope="col">ลำดับทั่วไป</th>
+                        <th scope="col">เลขที่หนังสือรับ</th>
                         <th scope="col">ลงวันที่</th>
                         <th scope="col">จาก</th>
                         <th scope="col">ถึง</th>
                         <th scope="col">เรื่อง</th>
-                        <th scope="col">วันที่รับ</th>
+                        <th scope="col">รับเรื่องวันที่</th>
                         <th scope="col">หมายเหตุ</th>
                         </tr>
                     </thead>
