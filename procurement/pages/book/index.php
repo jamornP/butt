@@ -10,7 +10,7 @@
 </head>
 <body class="font-prompt">
     <?php require $_SERVER['DOCUMENT_ROOT']."/butt/component/navbar/navbar_procurement.php";?>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="card shadow">
             <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
                 <h3 >ทะเบียน รับหนังสือ </h3>
