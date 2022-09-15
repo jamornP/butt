@@ -40,13 +40,15 @@
                     <tbody>
                         <?php for($i=1;$i<20;$i++){?>
                         <tr>
+                        <td scope="col"><?php echo date("d-m-Y");?></td>
+
                             <td scope="col"><?php echo $i;?></td>
-                            <td scope="col">เลขที่</td>
-                            <td scope="col">ลงวันที่</td>
-                            <td scope="col">จาก</td>
-                            <td scope="col">ถึง</td>
-                            <td scope="col">เรื่อง</td>
-                            <td scope="col">วันที่รับ</td>
+                            <td scope="col"><?php echo "709(4)-".date("d-m-Y");?></td>
+                            <td scope="col"><?php echo date("d-m-Y");?></td>
+                            <td scope="col">งาน OSM</td>
+                            <td scope="col">พัสดุ</td>
+                            <td scope="col">เรื่อง การปรับแผน</td>
+                            <td scope="col"><?php echo date("d-m-Y");?>บ</td>
                             <td scope="col">หมายเหตุ</td>
                         </tr>
                         <?php } ?>

@@ -119,4 +119,7 @@
     return  $y+543;
 
 }
+function bookId_recive($data){
+    return sprintf("%05d",$data);
+}
 ?>

@@ -1,4 +1,9 @@
+<?php require $_SERVER['DOCUMENT_ROOT']."/butt/vendor/autoload.php";?>
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/function/function.php";?>
+<?php
+use App\Model\Procurement\Book;
+ $bookObj = new Book;   
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +28,115 @@
             
             <div class="card-body">
                 <h5 class="card-title">วันที่ <?php echo day(date("Y-m-d"));?> เดือน <?php echo monthfull(date("Y-m-d"));?> พ.ศ. <?php echo year(date("Y-m-d"));?></h5>
+                <form action="save.php" method="get">
+                    
+                    
+                    <p class="mt-3"><b>หนังสือรับ</b></p>
+                    <hr>
+                    <div class="row">
+                        <?php
+
+                        ?>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <label for="bookDate" class="form-label">วันที่</label>
+                                <input type="text" id="book_add" class="form-control" name="date_add" value="<?php echo date("Y-m-d");?>" readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <?php
+                                $bookId = $bookObj->getBookIdByDate(date("Y-m-d"));
+                                $bookId_recive = bookId_recive($bookId);
+                                ?>
+                                <label for="bookId_recive" class="form-label">เลขทั่วไป <?php print_r($bookId);?></label>
+                                <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
+                                <input type="text" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
+                                <input type="text" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <label for="bookNum" class="form-label">เลขหนังสือรับ</label>
+                                <input type="text" id="bookNum" class="form-control" name="bookNum"  autocomplete="off" required  autofocus>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <label for="bookDate" class="form-label">วันที่ในหนังสือ</label>
+                                <input type="text" id="bookDate" class="form-control" name="bookDate" value="<?php echo date("Y-m-d");?>">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <label for="departmentForm_id"class="form-label">จาก</label>
+                                <select class="form-select" aria-label="Default select example" id="departmentForm_id" name="departmentForm_id" required>
+                                    <option  value="">เลือก</option>
+                                    <option  value="1">1</option>
+
+                                    <?php
+                                        // $positionObj = new Position;
+                                        // $positions = $positionObj->getAllPosition(); 
+                                        // foreach($positions as $position) {
+                                        //     $selected =($position['id']==$_SESSION['p_id']) ? 
+                                        //     "selected" : "disabled";
+                                        //     echo "
+                                        //     <option value='{$position['id']}' {$selected} >{$position['name']}</option>
+                                        //     ";
+                                        // }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <label for="departmentTo_id"class="form-label">ถึง</label>
+                                <select class="form-select" aria-label="Default select example" id="departTo_id" name="departTo_id" required>
+                                    <option value="">เลือก</option>
+                                    <option value="1">1</option>
+                                    <?php
+                                        // $departmentObj = new Department;
+                                        // $departments = $departmentObj->getAlldepartment(); 
+                                        // foreach($departments as $department) {
+                                        //     $selected =($department['id']==$_SESSION['d_id']) ? 
+                                        //     "selected" : "disabled";
+                                        //     echo "
+                                        //     <option value='{$department['id']}' {$selected} >{$department['name']}</option>
+                                        //     ";
+                                        // }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <div class="form-group">
+                                <label for="bookName" class="form-label">เรื่อง</label>
+                                <input type="text" id="bookName" class="form-control" name="bookName"  required>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <hr>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                        <button class="btn btn-success text-white" type="submit">บันทึก</button>
+                        <a href="/science/car/" class="btn btn-warning text-white">ย้อนกลับ</a>
+                    </div>
+                    
+                </form>
                 
                
             </div>
         </div>
     </div>
+    <script>
+        $(function(){
+            $("#bookDate").datepicker({
+                language:'th-en',
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+           
+        });
+    </script>
 </body>
 </html>
