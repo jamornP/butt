@@ -27,11 +27,11 @@ use App\Model\Procurement\Book;
             </div>
             
             <div class="card-body">
-                <h5 class="card-title">วันที่ <?php echo day(date("Y-m-d"));?> เดือน <?php echo monthfull(date("Y-m-d"));?> พ.ศ. <?php echo year(date("Y-m-d"));?></h5>
+                <h5 class="card-title"></h5>
                 <form action="save.php" method="get">
                     
                     
-                    <p class="mt-3"><b>หนังสือรับ</b></p>
+                    <p class="mt-3"><b>หนังสือรับ วันที่ <?php echo day(date("Y-m-d"));?> เดือน <?php echo monthfull(date("Y-m-d"));?> พ.ศ. <?php echo year(date("Y-m-d"));?></b></p>
                     <hr>
                     <div class="row">
                         <?php
@@ -49,10 +49,10 @@ use App\Model\Procurement\Book;
                                 $bookId = $bookObj->getBookIdByDate(date("Y-m-d"));
                                 $bookId_recive = bookId_recive($bookId);
                                 ?>
-                                <label for="bookId_recive" class="form-label">เลขทั่วไป <?php print_r($bookId);?></label>
+                                <label for="bookId_recive" class="form-label">เลขทั่วไป <?php //print_r($bookId);?></label>
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
-                                <input type="text" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
-                                <input type="text" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
+                                <input type="hidden" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
+                                <input type="hidden" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -119,7 +119,7 @@ use App\Model\Procurement\Book;
                     <hr>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
                         <button class="btn btn-success text-white" type="submit">บันทึก</button>
-                        <a href="/science/car/" class="btn btn-warning text-white">ย้อนกลับ</a>
+                        <a href="/butt/procurement/pages/book" class="btn btn-warning text-white">ย้อนกลับ</a>
                     </div>
                     
                 </form>

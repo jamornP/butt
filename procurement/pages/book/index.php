@@ -1,4 +1,9 @@
+<?php require $_SERVER['DOCUMENT_ROOT']."/butt/vendor/autoload.php";?>
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/function/function.php";?>
+<?php
+use App\Model\Procurement\Book;
+ $bookObj = new Book;   
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +21,7 @@
                 <h3 >ทะเบียน รับหนังสือ </h3>
                 <div>
                     <a href="/butt/procurement/pages/book/form.php" class="btn btn-primary">รับหนังสือปกติ</a>
-                    <a href="" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a>
+                    <a href="/butt/procurement/pages/book/form2.php" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a>
                 </div>
                 
             </div>
@@ -34,24 +39,31 @@
                         <th scope="col">ถึง</th>
                         <th scope="col">เรื่อง</th>
                         <th scope="col">รับเรื่องวันที่</th>
-                        <th scope="col">หมายเหตุ</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for($i=1;$i<20;$i++){?>
-                        <tr>
-                        <td scope="col"><?php echo date("d-m-Y");?></td>
-
-                            <td scope="col"><?php echo $i;?></td>
-                            <td scope="col"><?php echo "709(4)-".date("d-m-Y");?></td>
-                            <td scope="col"><?php echo date("d-m-Y");?></td>
-                            <td scope="col">งาน OSM</td>
-                            <td scope="col">พัสดุ</td>
-                            <td scope="col">เรื่อง การปรับแผน</td>
-                            <td scope="col"><?php echo date("d-m-Y");?>บ</td>
-                            <td scope="col">หมายเหตุ</td>
-                        </tr>
-                        <?php } ?>
+                        <?php 
+                        $data = $bookObj->getBookByDate(date("Y-m-d"));
+                        foreach($data as $book){
+                            $date_add=datethai($book['date_add']);
+                            $bookRegis_date=datethai($book['bookRegis_date']);
+                            $bookDate=datethai($book['bookDate']);
+                            echo "
+                                <tr>
+                                    <td>{$date_add}</td>
+                                    <td>{$book['bookId_recive']}</td>
+                                    <td>{$book['bookNum']}</td>
+                                    <td>{$bookDate}</td>
+                                    <td>{$book['departmentForm_id']}</td>
+                                    <td>{$book['departTo_id']}</td>
+                                    <td>{$book['bookName']}</td>
+                                    <td>{$bookRegis_date}</td>
+                            
+                                </tr>
+                            ";
+                        }
+                        ?>
                     </tbody>
                 </table>
                 <a href="#" class="btn btn-primary">Go somewhere</a>

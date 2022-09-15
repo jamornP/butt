@@ -61,5 +61,21 @@ class Book extends DbProcurement {
         }
         // return $row;
     }
+    public function getBookByDate($date) {
+        $sql="
+            select 
+                *
+            from 
+                tb_book 
+            where 
+                date_add =?
+            order by
+                bookId
+        ";  
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$date]);
+        $data =$stmt->fetchAll();
+        return $data;
+    }
 
 }
