@@ -35,6 +35,29 @@ class Book extends DbProcurement {
         return $this->pdo->lastInsertId();
 
     }
+    public function getBookId() {
+        $sql="
+            select 
+                bookId 
+            from 
+                tb_book 
+            order by
+                bookId
+            desc
+        ";  
+        $stmt = $this->pdo->query($sql);
+        $data = $stmt->fetchAll();
+        $row = $stmt->rowCount();
+        $num=intval($data[0]['bookId'])+1;
+        if($row == 0){
+            $num=1;
+            return $num;
+        }else{
+            // $num['bookId']=intval($data[0])+1;
+            return $num;
+        }
+        // return $row;
+    }
     public function getBookIdByDate($date) {
         $sql="
             select 
