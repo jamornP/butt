@@ -13,12 +13,12 @@
           <a class="nav-link" href="#">Link</a>
         </li> -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             รับหนังสือ
-          </a>
+          </a> -->
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/butt/procurement/pages/book/form.php">รับหนังสือปกติ</a></li>
-            <li><a class="dropdown-item" href="/butt/procurement/pages/book/form2.php">รับหนังสือย้อนหลัง</a></li>
+            <!-- <li><a class="dropdown-item" href="/butt/procurement/pages/book/form.php">รับหนังสือปกติ</a></li>
+            <li><a class="dropdown-item" href="/butt/procurement/pages/book/form2.php">รับหนังสือย้อนหลัง</a></li> -->
             <!-- <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li> -->
           </ul>

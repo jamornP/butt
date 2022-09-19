@@ -15,6 +15,7 @@ use App\Model\Procurement\Book;
 </head>
 <body class="font-prompt">
     <?php require $_SERVER['DOCUMENT_ROOT']."/butt/component/navbar/navbar_procurement.php";?>
+
     <div class="container-fluid mt-5">
         <div class="card shadow">
             <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
@@ -23,8 +24,11 @@ use App\Model\Procurement\Book;
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         รับหนังสือปกติ
                     </button>
+                    <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                       หนังสือรับย้อนหลัง
+                    </button>
                     <!-- <a href="/butt/procurement/pages/book/form.php" class="btn btn-primary">รับหนังสือปกติ</a> -->
-                    <a href="/butt/procurement/pages/book/form2.php" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a>
+                    <!-- <a href="/butt/procurement/pages/book/form2.php" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a> -->
                 </div>
                 
             </div>
@@ -69,7 +73,9 @@ use App\Model\Procurement\Book;
                         ?>
                     </tbody>
                 </table>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button type="button" class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    พิมพ์รายงาน
+                </button>
             </div>
         </div>
     </div>
@@ -83,7 +89,7 @@ use App\Model\Procurement\Book;
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="save.php" method="get">
+                <form action="save.php" method="post">
                     
                     
                     <p class="mt-3"><b></b></p>
@@ -183,9 +189,69 @@ use App\Model\Procurement\Book;
         </form>
         </div>
     </div>
+    <!-- Modal หนังสือย้อนหลัง -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="form.php" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">หนังสือรับย้อนหลัง</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="date2" class="form-label">วันที่รับ</label>
+                                    <input type="text" id="date2" class="form-control" name="date2" value="" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="submit" class="btn btn-primary">ต่อไป</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Print -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="report.php" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModal2Label">พิมพ์รายงาน</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="date2" class="form-label">วันที่ต้องการพิมพ์รายงาน</label>
+                                    <input type="text" id="date2" class="form-control" name="date2" value="<?php echo date("y-m-d");?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="submit" class="btn btn-primary">ต่อไป</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
         $(function(){
             $("#bookDate").datepicker({
+                language:'th-en',
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+           
+            $("#date2").datepicker({
                 language:'th-en',
                 format: 'yyyy-mm-dd',
                 autoclose: true

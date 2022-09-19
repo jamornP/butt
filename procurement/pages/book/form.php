@@ -18,7 +18,7 @@ use App\Model\Procurement\Book;
     <div class="container mt-5">
         <div class="card shadow">
             <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
-                <h3 >ทะเบียน รับหนังสือ </h3>
+                <h3 >ทะเบียน รับหนังสือ(ย้อนหลัง) </h3>
                 <!-- <div>
                     <a href="" class="btn btn-primary">รับหนังสือปกติ</a>
                     <a href="" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a>
@@ -31,7 +31,7 @@ use App\Model\Procurement\Book;
                 <form action="save.php" method="get">
                     
                     
-                    <p class="mt-3"><b>หนังสือรับ วันที่ <?php echo day(date("Y-m-d"));?> เดือน <?php echo monthfull(date("Y-m-d"));?> พ.ศ. <?php echo year(date("Y-m-d"));?></b></p>
+                    <p class="mt-3"><b>หนังสือรับย้อนหลัง วันที่ <?php echo day($_REQUEST['date2']);?> เดือน <?php echo monthfull($_REQUEST['date2']);?> พ.ศ. <?php echo year($_REQUEST['date2']);?></b></p>
                     <hr>
                     <div class="row">
                         <?php
@@ -40,19 +40,21 @@ use App\Model\Procurement\Book;
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="form-group">
                                 <label for="bookDate" class="form-label">วันที่</label>
-                                <input type="text" id="book_add" class="form-control" name="date_add" value="<?php echo date("Y-m-d");?>" readonly>
+                                <input type="text" id="book_add" class="form-control" name="date_add" value="<?php echo $_REQUEST['date2'];?>" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="form-group">
                                 <?php
-                                $bookId = $bookObj->getBookIdByDate(date("Y-m-d"));
-                                $bookId_recive = bookId_recive($bookId);
+                                    $databook = $bookObj->getBookIdByDate($_REQUEST['date2']);
+                                    $bookId = $databook['bookId'];
+                                    $bookId_num = $databook['bookId_num'];
+                                    $bookId_recive = bookId_recive($bookId)."/(1).".bookId_reciveRe($bookId_num);
                                 ?>
-                                <label for="bookId_recive" class="form-label">เลขทั่วไป <?php //print_r($bookId);?></label>
+                                <label for="bookId_recive" class="form-label">เลขทั่วไป <?php //print_r($databook);?></label>
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
                                 <input type="hidden" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
-                                <input type="hidden" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
+                                <input type="hidden" id="bookId_num" class="form-control" name="bookId_num" value="<?php echo $bookId_num;?>" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">

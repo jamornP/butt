@@ -61,25 +61,26 @@ class Book extends DbProcurement {
     public function getBookIdByDate($date) {
         $sql="
             select 
-                bookId 
+                * 
             from 
                 tb_book 
             where 
                 date_add =?
             order by
-                bookId
+                bookRegis_date
             desc
         ";  
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$date]);
         $data =$stmt->fetchAll();
         $row = $stmt->rowCount();
-        $num=intval($data[0]['bookId'])+1;
+        $num['bookId']=intval($data[0]['bookId']);
+        // $num['bookId_num']=intval($data[0]['bookId_num'])+1;
         if($row == 0){
-            $num=1;
+            $num['bookId_num']=1;
             return $num;
         }else{
-            // $num['bookId']=intval($data[0])+1;
+            $num['bookId_num']=intval($data[0]['bookId_num'])+1;
             return $num;
         }
         // return $row;
@@ -94,6 +95,7 @@ class Book extends DbProcurement {
                 date_add =?
             order by
                 bookId
+            
         ";  
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$date]);

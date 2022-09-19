@@ -9,6 +9,7 @@
 </head>
 <body class="font-prompt">
     <?php require $_SERVER['DOCUMENT_ROOT']."/butt/component/navbar/navbar_procurement.php";?>
+    <?php header('Location: /butt/procurement/pages/book/'); ?>
     <div class="container mt-5">
         <div class="card shadow">
             <h5 class="card-header bg-la">Featured</h5>

@@ -20,11 +20,21 @@ class Department extends DbProcurement {
         $stmt->execute($data);
         return $this->pdo->lastInsertId();
     }
-    public function getDepartmentBydSub($data) {
+    public function getDepartmentBydSub($dSub) {
         $sql="
-        
+            SELECT 
+                *
+            FROM
+                tb_department
+            WHERE
+                dSub = ?
+            ORDER BY 
+                dName
         ";
-        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$dSub]);
+        $data =$stmt->fetchAll();
+        return $data;
     }
     
 

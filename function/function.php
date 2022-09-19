@@ -122,4 +122,7 @@
 function bookId_recive($data){
     return sprintf("%05d",$data);
 }
+function bookId_reciveRe($data){
+    return sprintf("%03d",$data);
+}
 ?>
