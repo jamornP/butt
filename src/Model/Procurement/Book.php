@@ -63,7 +63,7 @@ class Book extends DbProcurement {
             select 
                 * 
             from 
-                tb_book 
+                tb_book  
             where 
                 date_add =?
             order by
@@ -88,13 +88,15 @@ class Book extends DbProcurement {
     public function getBookByDate($date) {
         $sql="
             select 
-                *
+                b.*,df.*,dt.*
             from 
-                tb_book 
+                tb_book AS b
+                LEFT JOIN tb_departmentF AS df ON b.departmentForm_id = df.id
+                LEFT JOIN tb_departmentT AS dt ON b.departTo_id = dt.id
             where 
-                date_add =?
+                b.date_add = ?
             order by
-                bookId
+                b.bookId
             
         ";  
         $stmt = $this->pdo->prepare($sql);

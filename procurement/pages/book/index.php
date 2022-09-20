@@ -3,6 +3,8 @@
 <?php
 use App\Model\Procurement\Book;
  $bookObj = new Book;   
+use App\Model\Procurement\Department;
+ $departmentObj = new Department;   
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +36,7 @@ use App\Model\Procurement\Book;
             </div>
             
             <div class="card-body">
-                <h5 class="card-title">วันที่ <?php echo day(date("Y-m-d"));?> เดือน <?php echo monthfull(date("Y-m-d"));?> พ.ศ. <?php echo year(date("Y-m-d"));?></h5>
+                <h5 class="card-title text-center">วันที่ <?php echo day(date("Y-m-d"));?> เดือน <?php echo monthfull(date("Y-m-d"));?> พ.ศ. <?php echo year(date("Y-m-d"));?></h5>
                 <table class="table table-hover">
                     <thead class="bg-main">
                         <tr>
@@ -62,11 +64,10 @@ use App\Model\Procurement\Book;
                                     <td>{$book['bookId_recive']}</td>
                                     <td>{$book['bookNum']}</td>
                                     <td>{$bookDate}</td>
-                                    <td>{$book['departmentForm_id']}</td>
-                                    <td>{$book['departTo_id']}</td>
+                                    <td>{$book['dNameF']}</td>
+                                    <td>{$book['dNameT']}</td>
                                     <td>{$book['bookName']}</td>
                                     <td>{$bookRegis_date}</td>
-                            
                                 </tr>
                             ";
                         }
@@ -133,18 +134,16 @@ use App\Model\Procurement\Book;
                                 <label for="departmentForm_id"class="form-label">จาก</label>
                                 <select class="form-select" aria-label="Default select example" id="departmentForm_id" name="departmentForm_id" required>
                                     <option  value="">เลือก</option>
-                                    <option  value="1">1</option>
-
                                     <?php
-                                        // $positionObj = new Position;
-                                        // $positions = $positionObj->getAllPosition(); 
-                                        // foreach($positions as $position) {
-                                        //     $selected =($position['id']==$_SESSION['p_id']) ? 
-                                        //     "selected" : "disabled";
-                                        //     echo "
-                                        //     <option value='{$position['id']}' {$selected} >{$position['name']}</option>
-                                        //     ";
-                                        // }
+
+                                        $positions = $departmentObj ->getDepartmentF(); 
+                                        foreach($positions as $position) {
+                                            // $selected =($position['id']==$_SESSION['p_id']) ? 
+                                            // "selected" : "disabled";
+                                            echo "
+                                            <option value='{$position['id']}'>{$position['dNameF']}</option>
+                                            ";
+                                        }
                                     ?>
                                 </select>
                             </div>
@@ -154,17 +153,15 @@ use App\Model\Procurement\Book;
                                 <label for="departmentTo_id"class="form-label">ถึง</label>
                                 <select class="form-select" aria-label="Default select example" id="departTo_id" name="departTo_id" required>
                                     <option value="">เลือก</option>
-                                    <option value="1">1</option>
                                     <?php
-                                        // $departmentObj = new Department;
-                                        // $departments = $departmentObj->getAlldepartment(); 
-                                        // foreach($departments as $department) {
-                                        //     $selected =($department['id']==$_SESSION['d_id']) ? 
-                                        //     "selected" : "disabled";
-                                        //     echo "
-                                        //     <option value='{$department['id']}' {$selected} >{$department['name']}</option>
-                                        //     ";
-                                        // }
+                                         $positions = $departmentObj ->getDepartmentT(); 
+                                         foreach($positions as $position) {
+                                             // $selected =($position['id']==$_SESSION['p_id']) ? 
+                                             // "selected" : "disabled";
+                                             echo "
+                                             <option value='{$position['id']}'>{$position['dNameT']}</option>
+                                             ";
+                                         }
                                     ?>
                                 </select>
                             </div>
@@ -229,8 +226,8 @@ use App\Model\Procurement\Book;
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="date2" class="form-label">วันที่ต้องการพิมพ์รายงาน</label>
-                                    <input type="text" id="date2" class="form-control" name="date2" value="<?php echo date("y-m-d");?>" autocomplete="off">
+                                    <label for="dateprint" class="form-label">วันที่ต้องการพิมพ์รายงาน</label>
+                                    <input type="text" id="dateprint" class="form-control" name="dateprint" value="<?php echo date("y-m-d");?>" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -252,6 +249,11 @@ use App\Model\Procurement\Book;
             });
            
             $("#date2").datepicker({
+                language:'th-en',
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+            $("#dateprint").datepicker({
                 language:'th-en',
                 format: 'yyyy-mm-dd',
                 autoclose: true
