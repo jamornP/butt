@@ -18,9 +18,10 @@ use App\Model\Procurement\Book;
         <div class="card shadow">
             <div class="card-body">
                 <h5 class="card-title text-center">ทะเบียนหนังสือรับ วันที่ <?php echo day($_REQUEST['dateprint']);?> เดือน <?php echo monthfull($_REQUEST['dateprint']);?> พ.ศ. <?php echo year($_REQUEST['dateprint']);?></h5>
-                <table class="table table-hover">
-                    <thead class="bg-main">
-                        <tr class='fs-14'>
+                <table class="table table-hover table-bordered table-responsive">
+                    <thead class="table-warning">
+                        <tr class='fs-14 text-center'>
+                            <th scope="col">#</th>
                             <th scope="col">วันที่รับ</th>
                             <th scope="col">ลำดับทั่วไป</th>
                             <th scope="col">เลขที่หนังสือรับ</th>
@@ -34,20 +35,23 @@ use App\Model\Procurement\Book;
                     <tbody>
                         <?php 
                         $data = $bookObj->getBookByDate($_REQUEST['dateprint']);
+                        $i=0;
                         foreach($data as $book){
+                            $i++;
                             $date_add=datethai($book['date_add']);
                             $bookRegis_date=datethai($book['bookRegis_date']);
                             $bookDate=datethai($book['bookDate']);
                             echo "
                                 <tr class='fs-14'>
-                                    <td>{$date_add}</td>
+                                    <td class='text-center'>{$i}</td>
+                                    <td class='text-center'>{$date_add}</td>
                                     <td>{$book['bookId_recive']}</td>
                                     <td>{$book['bookNum']}</td>
-                                    <td>{$bookDate}</td>
-                                    <td>{$book['dNameF']}</td>
-                                    <td>{$book['dNameT']}</td>
+                                    <td class='text-center'>{$bookDate}</td>
+                                    <td class='text-center'>{$book['dNameF']}</td>
+                                    <td class='text-center'>{$book['dNameT']}</td>
                                     <td>{$book['bookName']}</td>
-                                    <td>{$bookRegis_date}</td>
+                                    <td class='text-center'>{$bookRegis_date}</td>
                                 </tr>
                             ";
                         }

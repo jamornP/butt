@@ -1,8 +1,10 @@
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/vendor/autoload.php";?>
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/function/function.php";?>
 <?php
-use App\Model\Procurement\Book;
- $bookObj = new Book;   
+    use App\Model\Procurement\Book;
+    $bookObj = new Book;   
+    use App\Model\Procurement\Department;
+    $departmentObj = new Department;   
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +21,7 @@ use App\Model\Procurement\Book;
         <div class="card shadow">
             <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
                 <h3 >ทะเบียน รับหนังสือ(ย้อนหลัง) </h3>
-                <!-- <div>
-                    <a href="" class="btn btn-primary">รับหนังสือปกติ</a>
-                    <a href="" class="btn btn-warning text-white">รับหนังสือย้อนหลัง</a>
-                </div> -->
-                
+               
             </div>
             
             <div class="card-body">
@@ -74,18 +72,16 @@ use App\Model\Procurement\Book;
                                 <label for="departmentForm_id"class="form-label">จาก</label>
                                 <select class="form-select" aria-label="Default select example" id="departmentForm_id" name="departmentForm_id" required>
                                     <option  value="">เลือก</option>
-                                    <option  value="1">1</option>
-
                                     <?php
-                                        // $positionObj = new Position;
-                                        // $positions = $positionObj->getAllPosition(); 
-                                        // foreach($positions as $position) {
-                                        //     $selected =($position['id']==$_SESSION['p_id']) ? 
-                                        //     "selected" : "disabled";
-                                        //     echo "
-                                        //     <option value='{$position['id']}' {$selected} >{$position['name']}</option>
-                                        //     ";
-                                        // }
+
+                                        $positions = $departmentObj ->getDepartmentF(); 
+                                        foreach($positions as $position) {
+                                            // $selected =($position['id']==$_SESSION['p_id']) ? 
+                                            // "selected" : "disabled";
+                                            echo "
+                                            <option value='{$position['id']}'>{$position['dNameF']}</option>
+                                            ";
+                                        }
                                     ?>
                                 </select>
                             </div>
@@ -95,17 +91,15 @@ use App\Model\Procurement\Book;
                                 <label for="departmentTo_id"class="form-label">ถึง</label>
                                 <select class="form-select" aria-label="Default select example" id="departTo_id" name="departTo_id" required>
                                     <option value="">เลือก</option>
-                                    <option value="1">1</option>
                                     <?php
-                                        // $departmentObj = new Department;
-                                        // $departments = $departmentObj->getAlldepartment(); 
-                                        // foreach($departments as $department) {
-                                        //     $selected =($department['id']==$_SESSION['d_id']) ? 
-                                        //     "selected" : "disabled";
-                                        //     echo "
-                                        //     <option value='{$department['id']}' {$selected} >{$department['name']}</option>
-                                        //     ";
-                                        // }
+                                         $positions = $departmentObj ->getDepartmentT(); 
+                                         foreach($positions as $position) {
+                                             // $selected =($position['id']==$_SESSION['p_id']) ? 
+                                             // "selected" : "disabled";
+                                             echo "
+                                             <option value='{$position['id']}'>{$position['dNameT']}</option>
+                                             ";
+                                         }
                                     ?>
                                 </select>
                             </div>
