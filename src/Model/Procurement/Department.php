@@ -29,9 +29,10 @@ class Department extends DbProcurement {
             ORDER BY 
                 dNameF
         ";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$dSub]);
-        $data =$stmt->fetchAll();
+        $stmt = $this->pdo->query($sql);
+        // $stmt->execute([$dSub]);
+        
+        $data = $stmt->fetchAll();
         return $data;
     }
     public function getDepartmentT() {
@@ -43,9 +44,9 @@ class Department extends DbProcurement {
             ORDER BY 
                 dNameT
         ";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$dSub]);
-        $data =$stmt->fetchAll();
+        $stmt = $this->pdo->query($sql);
+        // $stmt->execute([$dSub]);
+        $data = $stmt->fetchAll();
         return $data;
     }
     
