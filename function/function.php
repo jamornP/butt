@@ -125,4 +125,21 @@ function bookId_recive($data){
 function bookId_reciveRe($data){
     return sprintf("%03d",$data);
 }
+function yearterm($date){
+    $da=explode("-",$date);
+    $d=$da[2];
+    $m=$da[1];
+    $y=$da[0]; 
+    $dateck = date_create($y."-10-01");
+    if($date >= $dateck){
+        
+    }
+    $da=explode("-",$date);
+    $d=$da[2];
+    $m=$da[1];
+    $y=$da[0];
+
+    return  $y+543;
+
+}
 ?>
