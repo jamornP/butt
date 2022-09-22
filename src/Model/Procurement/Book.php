@@ -94,7 +94,7 @@ class Book extends DbProcurement {
                 LEFT JOIN tb_departmentF AS df ON b.departmentForm_id = df.id
                 LEFT JOIN tb_departmentT AS dt ON b.departTo_id = dt.id
             where 
-                b.date_add = ?
+                b.bookRegis_date = ?
             order by
                 b.bookId
             
