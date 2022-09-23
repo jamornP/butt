@@ -130,16 +130,16 @@ function yearterm($date){
     $d=$da[2];
     $m=$da[1];
     $y=$da[0]; 
-    $dateck = date_create($y."-10-01");
+    $dateck = date($y."-10-01");
     if($date >= $dateck){
-        
+        $y=$da[0]+1;
+        $da="ตรงปี+1 วันที่กรอก :".$date." วันที่เช็ค :".$dateck."<br>ปีงบประมาณ :";
+    }else{
+        $y=$da[0];
+        $da="ตรงปี วันที่กรอก :".$date." วันที่เช็ค :".$dateck."<br>ปีงบประมาณ :";
     }
-    $da=explode("-",$date);
-    $d=$da[2];
-    $m=$da[1];
-    $y=$da[0];
-
-    return  $y+543;
+    // return  $da;
+     return  $y+543;
 
 }
 ?>

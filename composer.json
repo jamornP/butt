@@ -1,13 +1,17 @@
 {
-    "name": "jamorn.pe/butt",
+    "name": "morn/butt",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
     },
-    "authors": [{
-        "name": "Jamorn Pengsuay",
-        "email": "jamorn07@gmail.com"
-    }],
-    "require": {}
+    "authors": [
+        {
+            "name": "jamornP",
+            "email": "100953989+jamornP@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "claviska/simpleimage": "^3.7"
+    }
 }

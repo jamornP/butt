@@ -32,7 +32,7 @@
     <div class="container-fluid mt-5">
         <div class="card shadow">
             <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
-                <h3 >ทะเบียน รับหนังสือ </h3>
+                <h3 >ทะเบียน รับหนังสือ <?php echo date("Y-m-d");?></h3>
                 <div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         รับหนังสือปกติ
@@ -65,22 +65,39 @@
                     <tbody>
                         <?php 
                         $data = $bookObj->getBookByDate(date("Y-m-d"));
-                        foreach($data as $book){
-                            $date_add=datethai($book['date_add']);
-                            $bookRegis_date=datethai($book['bookRegis_date']);
-                            $bookDate=datethai($book['bookDate']);
+                        $i=0;
+                        foreach($data as $books){
+                            $i++;
+                            // $date_add=datethai($books['date_add']);
+                            // $booksRegis_date=datethai($books['bookRegis_date']);
+                            // $booksDate=datethai($books['bookDate']);
                             echo "
-                                <tr>
-                                    <td class='text-center'>{$date_add}</td>
-                                    <td>{$book['bookId_recive']}</td>
-                                    <td>{$book['bookNum']}</td>
-                                    <td class='text-center'>{$bookDate}</td>
-                                    <td class='text-center'>{$book['dNameF']}</td>
-                                    <td class='text-center'>{$book['dNameT']}</td>
-                                    <td>{$book['bookName']}</td>
-                                    <td class='text-center'>{$bookRegis_date}</td>
-                                </tr>
+                                 <tr>
+                                     <td class='text-center'>{$i}</td>
+                                     <td></td>
+                                     <td></td>
+                                     <td class='text-center'></td>
+                                     <td class='text-center'></td>
+                                     <td class='text-center'></td>
+                                     <td></td>
+                                     <td class='text-center'></td>
+                                 </tr>
                             ";
+                            // $date_add=datethai($books['date_add']);
+                            // $booksRegis_date=datethai($books['bookRegis_date']);
+                            // $booksDate=datethai($books['bookDate']);
+                            // echo "
+                            //     <tr>
+                            //         <td class='text-center'>{$date_add}</td>
+                            //         <td>{$books['bookId_recive']}</td>
+                            //         <td>{$books['bookNum']}</td>
+                            //         <td class='text-center'>{$booksDate}</td>
+                            //         <td class='text-center'>{$books['dNameF']}</td>
+                            //         <td class='text-center'>{$books['dNameT']}</td>
+                            //         <td>{$books['bookName']}</td>
+                            //         <td class='text-center'>{$booksRegis_date}</td>
+                            //     </tr>
+                            // ";
                         }
                         ?>
                     </tbody>

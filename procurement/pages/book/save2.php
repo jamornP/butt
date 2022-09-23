@@ -18,41 +18,72 @@ use App\Model\Procurement\Department;
 </head>
 <body class="font-prompt">
     <?php require $_SERVER['DOCUMENT_ROOT']."/butt/component/navbar/navbar_procurement.php";?>
-    <div aria-live="polite" aria-atomic="true" class="position-relative">
-  <!-- Position it: -->
-  <!-- - `.toast-container` for spacing between toasts -->
-  <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
-  <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
-  <div class="toast-container position-absolute top-0 end-0 p-3">
-
-    <!-- Then put toasts within -->
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="..." class="rounded me-2" alt="...">
-        <strong class="me-auto">Bootstrap</strong>
-        <small class="text-muted">just now</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <?php
+    if(isset($_POST['submit'])){
+      $year = yearterm($_POST['dateprint']);
+      echo $_POST['dateprint']."<br>";
+      echo "ปีงบประมาณ ".$year; 
+    }
+    ?>
+    <div class="container">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn btn-success text-white " data-bs-toggle="modal" data-bs-target="#exampleModal2">
+              พิมพ์รายงาน
+          </button>
       </div>
-      <div class="toast-body">
-        See? Just like this.
-      </div>
+    
     </div>
-
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="..." class="rounded me-2" alt="...">
-        <strong class="me-auto">Bootstrap</strong>
-        <small class="text-muted">2 seconds ago</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Heads up, toasts will stack automatically
-      </div>
+    
+    <!-- Modal Print -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModal2Label">พิมพ์รายงาน</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="dateprint" class="form-label">วันที่ต้องการพิมพ์รายงาน</label>
+                                    <input type="text" id="dateprint" class="form-control" name="dateprint" value="<?php echo date("Y-m-d");?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="submit" name="submit" class="btn btn-primary">ต่อไป</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<script>
-toast.show()
-</script>
+    <script>
+        $(function(){
+            $("#bookDate").datepicker({
+                language:'th-en',
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+           
+            $("#date2").datepicker({
+                language:'th-en',
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+            $("#dateprint").datepicker({
+                language:'th-en',
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+           
+        });
+        $('#staticBackdrop').on('shown.bs.modal', function () {
+            $('#bookNum').focus()
+        })
+    </script>
 </body>
 </html>

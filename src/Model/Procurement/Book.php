@@ -91,13 +91,12 @@ class Book extends DbProcurement {
                 b.*,df.*,dt.*
             from 
                 tb_book AS b
-                LEFT JOIN tb_departmentF AS df ON b.departmentForm_id = df.id
-                LEFT JOIN tb_departmentT AS dt ON b.departTo_id = dt.id
+                LEFT JOIN tb_departmentf AS df ON b.departmentForm_id = df.id
+                LEFT JOIN tb_departmentt AS dt ON b.departTo_id = dt.id
             where 
                 b.bookRegis_date = ?
             order by
                 b.bookId
-            
         ";  
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$date]);
