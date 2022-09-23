@@ -47,7 +47,7 @@
                                     $databook = $bookObj->getBookIdByDate($_REQUEST['date2']);
                                     $bookId = $databook['bookId'];
                                     $bookId_num = $databook['bookId_num'];
-                                    $bookId_recive = bookId_recive($bookId)."/(1).".bookId_reciveRe($bookId_num);
+                                    $bookId_recive = bookId_recive($bookId).".".bookId_reciveRe($bookId_num);
                                 ?>
                                 <label for="bookId_recive" class="form-label">เลขทั่วไป <?php //print_r($databook);?></label>
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
