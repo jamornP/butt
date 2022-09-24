@@ -16,7 +16,8 @@ class Book extends DbProcurement {
                 bookName, 
                 bookDate, 
                 departmentForm_id, 
-                departTo_id
+                departTo_id,
+                year
             ) VALUES (
                 NULL, 
                 :date_add, 
@@ -27,7 +28,8 @@ class Book extends DbProcurement {
                 :bookName, 
                 :bookDate, 
                 :departmentForm_id, 
-                :departTo_id
+                :departTo_id,
+                :year
             );
         ";
         $stmt = $this->pdo->prepare($sql);
@@ -35,25 +37,29 @@ class Book extends DbProcurement {
         return $this->pdo->lastInsertId();
 
     }
-    public function getBookId() {
+    public function getBookId($year) {
         $sql="
             select 
                 bookId 
             from 
                 tb_book 
+            where
+                year='".$year."'
             order by
                 bookId
             desc
         ";  
         $stmt = $this->pdo->query($sql);
+        // $stmt->execute($year);
         $data = $stmt->fetchAll();
         $row = $stmt->rowCount();
-        $num=intval($data[0]['bookId'])+1;
+        
         if($row == 0){
             $num=1;
             return $num;
         }else{
             // $num['bookId']=intval($data[0])+1;
+            $num=intval($data[0]['bookId'])+1;
             return $num;
         }
         // return $row;
@@ -65,21 +71,24 @@ class Book extends DbProcurement {
             from 
                 tb_book  
             where 
-                date_add =?
+                date_add = :date_add AND
+                year = :year
             order by
-                bookRegis_date
+                bookId
             desc
         ";  
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$date]);
+        $stmt->execute($date);
         $data =$stmt->fetchAll();
         $row = $stmt->rowCount();
-        $num['bookId']=intval($data[0]['bookId']);
+        
         // $num['bookId_num']=intval($data[0]['bookId_num'])+1;
         if($row == 0){
+            $num['bookId']=1;
             $num['bookId_num']=1;
             return $num;
         }else{
+            $num['bookId']=intval($data[0]['bookId']);
             $num['bookId_num']=intval($data[0]['bookId_num'])+1;
             return $num;
         }
@@ -94,12 +103,13 @@ class Book extends DbProcurement {
                 LEFT JOIN tb_departmentf AS df ON b.departmentForm_id = df.id
                 LEFT JOIN tb_departmentt AS dt ON b.departTo_id = dt.id
             where 
-                b.bookRegis_date = ?
+                b.bookRegis_date = :bookRegis_date AND
+                b.year = :year
             order by
                 b.bookId
         ";  
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$date]);
+        $stmt->execute($date);
         $data =$stmt->fetchAll();
         return $data;
     }

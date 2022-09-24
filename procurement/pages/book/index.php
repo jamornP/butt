@@ -32,7 +32,7 @@
     <div class="container-fluid mt-5">
         <div class="card shadow">
             <div class="card-header bg-la text-white d-grid gap-2 d-md-flex justify-content-md-between">
-                <h3 >ทะเบียน รับหนังสือ <?php echo date("Y-m-d");?></h3>
+                <h3 >ทะเบียน รับหนังสือ <?php echo "ปีงบประมาณ ".yearterm(date("Y-m-d"));?></h3>
                 <div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         รับหนังสือปกติ
@@ -58,29 +58,33 @@
                         <th scope="col">จาก</th>
                         <th scope="col">ถึง</th>
                         <th scope="col">เรื่อง</th>
-                        <th scope="col">รับเรื่องวันที่</th>
+                        <th scope="col">เรื่องวันที่</th>
                         
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                        $data = $bookObj->getBookByDate(date("Y-m-d"));
+                        $date['bookRegis_date']=date("Y-m-d");
+                        $date['year']=yearterm(date("Y-m-d"));
+                        $data = $bookObj->getBookByDate($date);
+                        // print_r($data);
                         $i=0;
                         foreach($data as $books){
                             $i++;
-                            // $date_add=datethai($books['date_add']);
-                            // $booksRegis_date=datethai($books['bookRegis_date']);
-                            // $booksDate=datethai($books['bookDate']);
+                            $date_add=datethai($books['date_add']);
+                            $booksRegis_date=datethai($books['bookRegis_date']);
+                            $booksDate=datethai($books['bookDate']);
+                            
                             echo "
                                  <tr>
-                                     <td class='text-center'>{$i}</td>
-                                     <td></td>
-                                     <td></td>
-                                     <td class='text-center'></td>
-                                     <td class='text-center'></td>
-                                     <td class='text-center'></td>
-                                     <td></td>
-                                     <td class='text-center'></td>
+                                 <td class='text-center'>{$date_add}</td>
+                                    <td>{$books['bookId_recive']}</td>
+                                    <td>{$books['bookNum']}</td>
+                                    <td class='text-center'>{$booksDate}</td>
+                                    <td class='text-center'>{$books['dNameF']}</td>
+                                    <td class='text-center'>{$books['dNameT']}</td>
+                                    <td>{$books['bookName']}</td>
+                                    <td class='text-center'>{$booksRegis_date}</td>
                                  </tr>
                             ";
                             // $date_add=datethai($books['date_add']);
@@ -130,22 +134,30 @@
                         <?php
 
                         ?>
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <!-- <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="form-group">
                                 <label for="bookDate" class="form-label">วันที่</label>
-                                <input type="text" id="book_add" class="form-control" name="date_add" value="<?php echo date("Y-m-d");?>" readonly>
+                                <input type="hidden" id="book_add" class="form-control" name="date_add" value="<?php echo date("Y-m-d");?>" readonly>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                <label for="year" class="form-label">ปีงบประมาณ</label>
+                                <input type="text" id="year" class="form-control" name="year" value="<?php echo yearterm(date("Y-m-d"));?>" readonly>
+                                <input type="hidden" id="book_add" class="form-control" name="date_add" value="<?php echo date("Y-m-d");?>" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="form-group">
                                 <?php
-                                $bookId = $bookObj->getBookId();
+                                $year=yearterm(date("Y-m-d"));
+                                $bookId = $bookObj->getBookId($year);
                                 $bookId_recive = bookId_recive($bookId);
                                 ?>
                                 <label for="bookId_recive" class="form-label">เลขทั่วไป <?php //print_r($bookId);?></label>
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
-                                <input type="hidden" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
-                                <input type="hidden" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
+                                <input type="text" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
+                                <input type="text" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">

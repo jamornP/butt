@@ -44,15 +44,19 @@
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="form-group">
                                 <?php
-                                    $databook = $bookObj->getBookIdByDate($_REQUEST['date2']);
+                                    $year=yearterm(date("Y-m-d"));
+                                    $date['date_add']=$_REQUEST['date2'];
+                                    $date['year']=$year;
+                                    $databook = $bookObj->getBookIdByDate($date);
                                     $bookId = $databook['bookId'];
                                     $bookId_num = $databook['bookId_num'];
                                     $bookId_recive = bookId_recive($bookId).".".bookId_reciveRe($bookId_num);
                                 ?>
                                 <label for="bookId_recive" class="form-label">เลขทั่วไป <?php //print_r($databook);?></label>
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
-                                <input type="hidden" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
-                                <input type="hidden" id="bookId_num" class="form-control" name="bookId_num" value="<?php echo $bookId_num;?>" readonly>
+                                <input type="text" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
+                                <input type="text" id="bookId_num" class="form-control" name="bookId_num" value="<?php echo $bookId_num;?>" readonly>
+                                <input type="text" id="year" class="form-control" name="year" value="<?php echo yearterm(date("Y-m-d"));?>" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">
