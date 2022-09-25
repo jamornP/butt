@@ -17,6 +17,7 @@ class Book extends DbProcurement {
                 bookDate, 
                 departmentForm_id, 
                 departTo_id,
+                bookRegis_date,
                 year
             ) VALUES (
                 NULL, 
@@ -29,6 +30,7 @@ class Book extends DbProcurement {
                 :bookDate, 
                 :departmentForm_id, 
                 :departTo_id,
+                :bookRegis_date,
                 :year
             );
         ";
@@ -74,7 +76,7 @@ class Book extends DbProcurement {
                 date_add = :date_add AND
                 year = :year
             order by
-                bookId
+                regis
             desc
         ";  
         $stmt = $this->pdo->prepare($sql);

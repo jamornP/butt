@@ -22,7 +22,7 @@ use App\Model\Procurement\Book;
                     <thead class="table-warning">
                         <tr class='fs-14 text-center'>
                             <th scope="col">#</th>
-                            <th scope="col">วันที่รับ</th>
+                            <th scope="col">วันที่รับจริง</th>
                             <th scope="col">ลำดับทั่วไป</th>
                             <th scope="col">เลขที่หนังสือรับ</th>
                             <th scope="col">ลงวันที่</th>
@@ -34,7 +34,9 @@ use App\Model\Procurement\Book;
                     </thead>
                     <tbody>
                         <?php 
-                        $data = $bookObj->getBookByDate($_REQUEST['dateprint']);
+                         $date['bookRegis_date']=$_REQUEST['dateprint'];
+                         $date['year']=yearterm(date("Y-m-d"));
+                        $data = $bookObj->getBookByDate($date);
                         $i=0;
                         foreach($data as $book){
                             $i++;
@@ -44,14 +46,15 @@ use App\Model\Procurement\Book;
                             echo "
                                 <tr class='fs-14'>
                                     <td class='text-center'>{$i}</td>
-                                    <td class='text-center'>{$date_add}</td>
+                                    <td class='text-center'>{$bookRegis_date}</td>
                                     <td>{$book['bookId_recive']}</td>
                                     <td>{$book['bookNum']}</td>
                                     <td class='text-center'>{$bookDate}</td>
                                     <td class='text-center'>{$book['dNameF']}</td>
                                     <td class='text-center'>{$book['dNameT']}</td>
                                     <td>{$book['bookName']}</td>
-                                    <td class='text-center'>{$bookRegis_date}</td>
+                                    
+                                    <td class='text-center'>{$date_add}</td>
                                 </tr>
                             ";
                         }

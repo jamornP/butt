@@ -158,6 +158,7 @@
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
                                 <input type="text" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
                                 <input type="text" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
+                                <input type="text" id="bookRegis_date" class="form-control" name="bookRegis_date" value="<?php echo date('Y-m-d');?>" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">

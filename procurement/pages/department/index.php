@@ -23,8 +23,15 @@
             <div class="col-md-6">
                 <div class="card shadow">
                     <h5 class="card-header bg-la text-white">ข้อมูลหน่วยงานที่ส่งหนังสือ</h5>
-                    <div class="container mt-4">
-                        <table class="table table-hover table-bordered">
+
+                    <div class="container mt-2">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            เพิ่ม
+                            </button>
+                        </div>
+                        <table class="table table-hover table-bordered mt-2">
                             <thead class="table-warning">
                                 <tr class="">
                                     <th scope="col" class='text-center'>#</th>
@@ -53,8 +60,14 @@
             <div class="col-6">
                 <div class="card shadow">
                     <h5 class="card-header bg-primary text-white">ข้อมูลหน่วยงานรับหนังสือ</h5>
-                    <div class="container mt-4">
-                        <table class="table table-hover table-bordered">
+                    <div class="container mt-2">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            เพิ่ม
+                            </button>
+                        </div>
+                        <table class="table table-hover table-bordered mt-2">
                             <thead class="table-warning">
                                 <tr class="">
                                     <th scope="col">#</th>
@@ -83,5 +96,62 @@
         </div>
         
     </div>
+    
+
+    <!-- Modal form -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="save.php" method="get">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">หน่วยงานที่ส่งหนังสือ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="dNameF" class="form-label">ชื่อหน่วยงานที่ส่งหนังสือ</label>
+                                <input type="text" id="dNameF" class="form-control" name="dNameF"  autocomplete="off" required  autofocus>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" name="submitF" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <!-- Modal to-->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="save.php" method="get">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">หน่วยงานที่รับหนังสือ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button"  name="submitT" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+         $('#exampleModal1').on('shown.bs.modal', function () {
+            $('#dNameF').focus()
+        })
+         $('#exampleModal2').on('shown.bs.modal', function () {
+            $('#dNameT').focus()
+        })
+    </script>
 </body>
 </html>

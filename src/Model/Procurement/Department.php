@@ -4,16 +4,28 @@ namespace App\Model\Procurement;
 use App\Database\DbProcurement;
 
 class Department extends DbProcurement {
-    public function InsertDepartment($data) {
+    public function InsertDepartmentf($data) {
         $sql="
-            INSERT INTO tb_department (
+            INSERT INTO tb_departmentf (
                 id, 
-                dName, 
-                dSub
+                dNameF        
             ) VALUES (
                 NULL, 
-                :dName, 
-                :dSub
+                :dNameF
+            )
+        ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($data);
+        return $this->pdo->lastInsertId();
+    }
+    public function InsertDepartmentt($data) {
+        $sql="
+            INSERT INTO tb_departmentt (
+                id, 
+                dNameT        
+            ) VALUES (
+                NULL, 
+                :dNameT
             )
         ";
         $stmt = $this->pdo->prepare($sql);
