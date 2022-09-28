@@ -3,8 +3,12 @@
 <link rel="stylesheet" href="/butt/theme/css/bootstrap-theme.css">
 <link rel="stylesheet" href="/butt/theme/css/style_procurement.css">
 <link rel="stylesheet" href="/butt/inc/datepicker/css/datepicker.css">
-  <!-- Toastr -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+<!-- Toastr -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+<!-- select2 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<!-- icon -->
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 <!-- <script src='/inc/lib/jquery/dist/jquery.min.js'></script> -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
@@ -15,6 +19,8 @@
 <script src='/butt/inc/datepicker/js/locales/bootstrap-datepicker.th.js'></script>
  <!-- Toastr -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+ <!-- select2 -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script>
     // Command: toastr["success"]("ข้อความ")
 

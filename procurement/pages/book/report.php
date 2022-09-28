@@ -21,15 +21,15 @@ use App\Model\Procurement\Book;
                 <table class="table table-hover table-bordered table-responsive">
                     <thead class="table-warning">
                         <tr class='fs-14 text-center'>
-                            <th scope="col">#</th>
-                            <th scope="col">วันที่รับจริง</th>
-                            <th scope="col">ลำดับทั่วไป</th>
-                            <th scope="col">เลขที่หนังสือรับ</th>
-                            <th scope="col">ลงวันที่</th>
-                            <th scope="col">จาก</th>
-                            <th scope="col">ถึง</th>
+                            <th scope="col" width="3%">#</th>
+                            <th scope="col" width="7%">วันที่รับ</th>
+                            <th scope="col" width="7%">ลำดับทั่วไป</th>
+                            <th scope="col" width="15%">เลขที่หนังสือรับ</th>
+                            <th scope="col" width="7%">ลงวันที่</th>
+                            <th scope="col" width="10%">จาก</th>
+                            <th scope="col" width="8%">ถึง</th>
                             <th scope="col">เรื่อง</th>
-                            <th scope="col">รับเรื่องวันที่</th>
+                            <th scope="col" width="7%">เรื่องวันที่</th>
                         </tr>
                     </thead>
                     <tbody>

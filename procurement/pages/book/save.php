@@ -3,6 +3,19 @@
 use App\Model\Procurement\Book;
 $bookObj = new Book; 
 print_r($_REQUEST);
-$b=$bookObj->InsertBook($_REQUEST);
-header('Location: /butt/procurement/pages/book/index.php?msg=ok');
+if($_REQUEST['edit']=='edit'){
+    $data['bookNum']=$_REQUEST['bookNum'];
+    $data['bookName']=$_REQUEST['bookName'];
+    $data['bookDate']=$_REQUEST['bookDate'];
+    $data['departmentForm_id']=$_REQUEST['departmentForm_id'];
+    $data['departTo_id']=$_REQUEST['departTo_id'];
+    $data['id']=$_REQUEST['id'];
+    print_r($data);
+    $b=$bookObj->UpdateBook($data);
+    header('Location: /butt/procurement/pages/book/index.php?msg=edit');
+}else{
+    $b=$bookObj->InsertBook($_REQUEST);
+    header('Location: /butt/procurement/pages/book/index.php?msg=ok');
+}
+
 ?>

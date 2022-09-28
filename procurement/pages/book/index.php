@@ -26,6 +26,10 @@
                 $mes="บันทึกข้อมูลเรียบร้อย";
                 echo "<script type='text/javascript'>toastr.success('" . $mes . "', { timeOut: 100000 })</script>";   
             }
+            if($_REQUEST['msg']=='edit'){
+                $mes="แก้ไขข้อมูลเรียบร้อย";
+                echo "<script type='text/javascript'>toastr.success('" . $mes . "', { timeOut: 100000 })</script>";   
+            }
            
         }
     ?>
@@ -51,14 +55,14 @@
                 <table class="table table-hover table-bordered">
                     <thead class="table-warning">
                         <tr class="text-center">
-                        <th scope="col">วันที่รับ</th>
-                        <th scope="col">ลำดับทั่วไป</th>
-                        <th scope="col">เลขที่หนังสือรับ</th>
-                        <th scope="col">ลงวันที่</th>
-                        <th scope="col">จาก</th>
-                        <th scope="col">ถึง</th>
+                        <th scope="col" width="7%">วันที่รับ</th>
+                        <th scope="col" width="7%">ลำดับทั่วไป</th>
+                        <th scope="col" width="15%">เลขที่หนังสือรับ</th>
+                        <th scope="col" width="7%">ลงวันที่</th>
+                        <th scope="col" width="10%">จาก</th>
+                        <th scope="col" width="8%">ถึง</th>
                         <th scope="col">เรื่อง</th>
-                        <th scope="col">เรื่องวันที่</th>
+                        <th scope="col" width="7%">รับเรื่องวันที่</th>
                         
                         </tr>
                     </thead>
@@ -156,9 +160,9 @@
                                 ?>
                                 <label for="bookId_recive" class="form-label">เลขทั่วไป <?php //print_r($bookId);?></label>
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
-                                <input type="text" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
-                                <input type="text" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
-                                <input type="text" id="bookRegis_date" class="form-control" name="bookRegis_date" value="<?php echo date('Y-m-d');?>" readonly>
+                                <input type="hidden" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
+                                <input type="hidden" id="bookId_num" class="form-control" name="bookId_num" value="0" readonly>
+                                <input type="hidden" id="bookRegis_date" class="form-control" name="bookRegis_date" value="<?php echo date('Y-m-d');?>" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -176,7 +180,7 @@
                         <div class="col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label for="departmentForm_id"class="form-label">จาก</label>
-                                <select class="form-select" aria-label="Default select example" id="departmentForm_id" name="departmentForm_id" required>
+                                <select class="form-select " aria-label="Default select example" id="departmentForm_id" name="departmentForm_id" required>
                                     <option  value="">เลือก</option>
                                     <?php
 
@@ -243,7 +247,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="date2" class="form-label">วันที่รับ</label>
+                                    <label for="date2" class="form-label">วันที่รับย้อนหลัง</label>
                                     <input type="text" id="date2" class="form-control" name="date2" value="" autocomplete="off">
                                 </div>
                             </div>
@@ -307,6 +311,13 @@
         $('#staticBackdrop').on('shown.bs.modal', function () {
             $('#bookNum').focus()
         })
+        $('#exampleModal').on('shown.bs.modal', function () {
+            $('#date2').focus()
+        })
+        $('#exampleModal2').on('shown.bs.modal', function () {
+            $('#dateprint').focus()
+        })
     </script>
+    
 </body>
 </html>
