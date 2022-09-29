@@ -14,7 +14,9 @@ if($_REQUEST['edit']=='edit'){
     $b=$bookObj->UpdateBook($data);
     header('Location: /butt/procurement/pages/book/index.php?msg=edit');
 }else{
-    $b=$bookObj->InsertBook($_REQUEST);
+    $data = $_REQUEST;
+    unset($data['edit']);
+    $b=$bookObj->InsertBook($data);
     header('Location: /butt/procurement/pages/book/index.php?msg=ok');
 }
 

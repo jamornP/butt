@@ -164,7 +164,7 @@
                                 order by
                                     b.bookId
                             ";
-                            echo $sql;
+                            // echo $sql;
                             $data = $bookObj->getBookSearch($sql);
                             // print_r($data);
                             $i=0;
