@@ -1,4 +1,5 @@
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/vendor/autoload.php";?>
+<?php require $_SERVER['DOCUMENT_ROOT']."/butt/procurement/pages/auth/auth.php";?>
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/function/function.php";?>
 <?php
     use App\Model\Procurement\Book;
