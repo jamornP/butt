@@ -24,7 +24,7 @@ use App\Model\Procurement\Book;
                             <th scope="col" width="3%">#</th>
                             <th scope="col" width="7%">วันที่รับ</th>
                             <th scope="col" width="7%">ลำดับทั่วไป</th>
-                            <th scope="col" width="15%">เลขที่หนังสือรับ</th>
+                            <th scope="col" width="10%">เลขที่หนังสือรับ</th>
                             <th scope="col" width="7%">ลงวันที่</th>
                             <th scope="col" width="10%">จาก</th>
                             <th scope="col" width="8%">ถึง</th>
