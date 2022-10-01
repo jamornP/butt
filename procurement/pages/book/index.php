@@ -70,8 +70,8 @@
                     <tbody>
                         <?php 
                         $date['bookRegis_date']=date("Y-m-d");
-                        $date['year']=yearterm(date("Y-m-d"));
-                        $data = $bookObj->getBookByDate($date);
+                        // $date['year']=yearterm(date("Y-m-d"));
+                        $data = $bookObj->getBookByDate2($date);
                         // print_r($data);
                         $i=0;
                         foreach($data as $books){

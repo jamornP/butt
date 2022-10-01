@@ -96,35 +96,6 @@ class Book extends DbProcurement {
         }
         // return $row;
     }
-    public function getBookIdByDate2($date) {
-        $sql="
-            select 
-                * 
-            from 
-                tb_book  
-            where 
-                date_add = :date_add 
-            order by
-                regis
-            desc
-        ";  
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($date);
-        $data =$stmt->fetchAll();
-        $row = $stmt->rowCount();
-        
-        // $num['bookId_num']=intval($data[0]['bookId_num'])+1;
-        if($row == 0){
-            $num['bookId']=1;
-            $num['bookId_num']=1;
-            return $num;
-        }else{
-            $num['bookId']=intval($data[0]['bookId']);
-            $num['bookId_num']=intval($data[0]['bookId_num'])+1;
-            return $num;
-        }
-        // return $row;
-    }
     public function getBookByDate($date) {
         $sql="
             select 
@@ -136,6 +107,24 @@ class Book extends DbProcurement {
             where 
                 b.bookRegis_date = :bookRegis_date AND
                 b.year = :year
+            order by
+                b.bookId
+        ";  
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($date);
+        $data =$stmt->fetchAll();
+        return $data;
+    }
+    public function getBookByDate2($date) {
+        $sql="
+            select 
+                b.*,df.*,dt.*
+            from 
+                tb_book AS b
+                LEFT JOIN tb_departmentf AS df ON b.departmentForm_id = df.id
+                LEFT JOIN tb_departmentt AS dt ON b.departTo_id = dt.id
+            where 
+                b.bookRegis_date = :bookRegis_date 
             order by
                 b.bookId
         ";  

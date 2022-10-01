@@ -1,4 +1,5 @@
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/vendor/autoload.php";?>
+<?php require $_SERVER['DOCUMENT_ROOT']."/butt/procurement/pages/auth/auth.php";?>
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/function/function.php";?>
 <?php
 use App\Model\Procurement\Book;
@@ -36,7 +37,7 @@ use App\Model\Procurement\Book;
                     <tbody>
                         <?php 
                          $date['bookRegis_date']=$_REQUEST['dateprint'];
-                         $date['year']=yearterm(date("Y-m-d"));
+                        //  $date['year']=yearterm(date("Y-m-d"));
                         $data = $bookObj->getBookByDate2($date);
                         $i=0;
                         foreach($data as $book){

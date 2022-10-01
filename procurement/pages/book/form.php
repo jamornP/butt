@@ -1,4 +1,5 @@
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/vendor/autoload.php";?>
+<?php require $_SERVER['DOCUMENT_ROOT']."/butt/procurement/pages/auth/auth.php";?>
 <?php require $_SERVER['DOCUMENT_ROOT']."/butt/function/function.php";?>
 <?php
     use App\Model\Procurement\Book;
@@ -44,7 +45,7 @@
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="form-group">
                                 <?php
-                                    $year=yearterm(date("Y-m-d"));
+                                    $year=yearterm($_REQUEST['date2']);
                                     $date['date_add']=$_REQUEST['date2'];
                                     $date['year']=$year;
                                     $databook = $bookObj->getBookIdByDate($date);
@@ -56,7 +57,7 @@
                                 <input type="text" id="bookId_recive" class="form-control" name="bookId_recive" value="<?php echo $bookId_recive;?>" readonly>
                                 <input type="hidden" id="bookId" class="form-control" name="bookId" value="<?php echo $bookId;?>" readonly>
                                 <input type="hidden" id="bookId_num" class="form-control" name="bookId_num" value="<?php echo $bookId_num;?>" readonly>
-                                <input type="hidden" id="year" class="form-control" name="year" value="<?php echo yearterm(date("Y-m-d"));?>" readonly>
+                                <input type="hidden" id="year" class="form-control" name="year" value="<?php echo $year;?>" readonly>
                                 <input type="hidden" id="bookRegis_date" class="form-control" name="bookRegis_date" value="<?php echo date('Y-m-d');?>" readonly>
                             </div>
                         </div>
