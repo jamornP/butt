@@ -30,13 +30,14 @@ use App\Model\Procurement\Book;
                             <th scope="col" width="8%">ถึง</th>
                             <th scope="col">เรื่อง</th>
                             <th scope="col" width="7%">เรื่องวันที่</th>
+                            <th scope="col" width="7%">หมายเหตุ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                          $date['bookRegis_date']=$_REQUEST['dateprint'];
                          $date['year']=yearterm(date("Y-m-d"));
-                        $data = $bookObj->getBookByDate($date);
+                        $data = $bookObj->getBookByDate2($date);
                         $i=0;
                         foreach($data as $book){
                             $i++;
@@ -55,6 +56,7 @@ use App\Model\Procurement\Book;
                                     <td>{$book['bookName']}</td>
                                     
                                     <td class='text-center'>{$date_add}</td>
+                                    <td></td>
                                 </tr>
                             ";
                         }
