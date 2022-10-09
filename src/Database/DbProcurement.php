@@ -5,8 +5,8 @@ use PDO;
 
 class DbProcurement{
     private $host = "localhost";
-	private $user = "root";
-	private $password = "";
+	private $user = "superuser";
+	private $password = "butt12345";
 	private $dbName = "db_procurement";
 	protected $pdo;
 
